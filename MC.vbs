@@ -271,9 +271,11 @@ End If
                         End If
                 Else
                         If sDay > 28 Then
+                                sMonth = sMonth + 1
                                 sDay = 1
                         End If
                 End If
+
         End If
 
 
