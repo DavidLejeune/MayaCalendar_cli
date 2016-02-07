@@ -6,6 +6,20 @@ Set objStdOut = WScript.StdOut
 Wscript.StdOut.Write "Enter The Date to Search : "
 strDate = Wscript.StdIn.ReadLine
 
+
+
+Wscript.StdOut.Write "Display calculation (y/n) : "
+strShow = Wscript.StdIn.ReadLine
+
+If Ucase(strShow) = "Y" Then
+    boolShow = True
+Else
+    boolShow = False
+End If
+
+
+
+
 Const ForReading = 1, ForWriting = 2, ForAppending = 8
 Set objFSO = CreateObject("Scripting.FileSystemObject")
         sRootPath = Replace(WScript.ScriptFullName, WScript.ScriptName, "")
@@ -178,9 +192,9 @@ End If
 
 
 
-
-'       objStdOut.WriteLine SDcount & vbTab & SMname & vbTab & LDcount & vbTab & LMname & vbTab & sDay & vbTab & _
-'                                               sMonth & vbTab & sYear & vbTab & sBCAD & vbTab & "[" & CFZ & "]" & vbTab & sFullDate
+If boolShow = True then
+       objStdOut.WriteLine SDcount & vbTab & SMname & vbTab & LDcount & vbTab & LMname & vbTab & sDay & vbTab & _
+                                               sMonth & vbTab & sYear & vbTab & sBCAD & vbTab & "[" & CFZ & "]" & vbTab & sFullDate
 'objStdOut.WriteLine SDcount & vbTab & SMname & vbTab  & LDcount & vbTab  & LMname & vbTab & sFullDate & _
  '                                               vbTab & ">" & CFZ & "<" & vbTab & vbTab & cBaktun & "." & cKatun & "." & cTun & "." & _
  '                                       cUinal & "." & cKin & vbTab & vbTab &  "[" & cBaktun & " "  & "Baktun" & " "  & cKatun & " " & "Katun" & " " & cTun & " " & "Tun" & " " & cUinal & " " & "Uinal" & " " & cKin & " " & "Kin" & "]"
@@ -189,6 +203,8 @@ End If
 'objLogFile.WriteLine SDcount & vbTab & SMname & vbTab  & LDcount & vbTab  & LMname & vbTab & sFullDate & _
 '                                                vbTab & ">" & CFZ & "<" & vbTab & vbTab & cBaktun & "." & cKatun & "." & cTun & "." & _
 '                                        cUinal & "." & cKin & vbTab & vbTab &  "[" & cBaktun & " "  & "Baktun" & " "  & cKatun & " " & "Katun" & " " & cTun & " " & "Tun" & " " & cUinal & " " & "Uinal" & " " & cKin & " " & "Kin" & "]"
+End If
+
 
         SDcount = SDcount + 1
         SMcount = SMcount + 1
