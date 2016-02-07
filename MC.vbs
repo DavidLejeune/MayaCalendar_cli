@@ -1,11 +1,10 @@
 ' ShortDays   = 1 to 13
 ' ShortMonths = 1 to 20
 ' LongMonths  = 1 to 18 (*20) + 1 (*5)
-
+'
 Set objStdOut = WScript.StdOut
-Wscript.StdOut.Write "Enter The Date to Search : " 
+Wscript.StdOut.Write "Enter The Date to Search : "
 strDate = Wscript.StdIn.ReadLine
-
 
 Const ForReading = 1, ForWriting = 2, ForAppending = 8
 Set objFSO = CreateObject("Scripting.FileSystemObject")
@@ -48,7 +47,7 @@ sBCAD = "BC"
 
         If Len(sDay) = 1 Then
                 strDay = "0" & sDay
-        Else 
+        Else
                 strDay = sDay
         End If
         If Len(sMonth) = 1 Then
@@ -56,15 +55,15 @@ sBCAD = "BC"
         Else
                 strMonth = sMonth
         End If
-                
-        sFullDate = strDay & "/" & strMonth & "/" & sYear & " " & sBCAD 
-        
-        
+
+        sFullDate = strDay & "/" & strMonth & "/" & sYear & " " & sBCAD
+
+
 
 Do While sFullDate <> strDate
 
 If SMcount = 1 Then
-        SMname = "Imix" & vbTab 
+        SMname = "Imix" & vbTab
 ElseIf SMCount = 2 Then
         SMname = "Ik" & vbTab
 ElseIf SMCount = 3 Then
@@ -103,7 +102,7 @@ ElseIf SMCount = 19 Then
         SMname = "Cauac" & vbTab
 ElseIf SMCount = 20 Then
         SMname = "Ahau" & vbTab
-End If  
+End If
 
 
 
@@ -145,11 +144,11 @@ ElseIf LMcount = 18 Then
         LMname = "Kumku"
 ElseIf LMcount = 19 Then
         LMname = "Uayeb"
-End If  
+End If
 
         If Len(sDay) = 1 Then
                 strDay = "0" & sDay
-        Else 
+        Else
                 strDay = sDay
         End If
         If Len(sMonth) = 1 Then
@@ -157,40 +156,40 @@ End If
         Else
                 strMonth = sMonth
         End If
-                
-        sFullDate = strDay & "/" & strMonth & "/" & sYear & " " & sBCAD 
-        
-        
+
+        sFullDate = strDay & "/" & strMonth & "/" & sYear & " " & sBCAD
+
+
         cBaktun = Int(CFZ / 144000)
         NewCount = CFZ - (144000 * cBaktun)
-        
+
         cKatun = Int(NewCount / 7200)
         NewCount = NewCount - (7200 * cKatun)
-        
+
         cTun = Int(NewCount / 360)
         NewCount = NewCount - (360 * cTun)
-        
+
         cUinal = Int(NewCount / 20)
         NewCount = NewCount - (20 * cUinal)
-        
+
         cKin = Int(NewCount / 1)
         NewCount = NewCount - (1 * cKin)
-        
-        
-        
-        
-        
+
+
+
+
+
 '       objStdOut.WriteLine SDcount & vbTab & SMname & vbTab & LDcount & vbTab & LMname & vbTab & sDay & vbTab & _
 '                                               sMonth & vbTab & sYear & vbTab & sBCAD & vbTab & "[" & CFZ & "]" & vbTab & sFullDate
 'objStdOut.WriteLine SDcount & vbTab & SMname & vbTab  & LDcount & vbTab  & LMname & vbTab & sFullDate & _
  '                                               vbTab & ">" & CFZ & "<" & vbTab & vbTab & cBaktun & "." & cKatun & "." & cTun & "." & _
- '                                       cUinal & "." & cKin & vbTab & vbTab &  "[" & cBaktun & " "  & "Baktun" & " "  & cKatun & " " & "Katun" & " " & cTun & " " & "Tun" & " " & cUinal & " " & "Uinal" & " " & cKin & " " & "Kin" & "]" 
-                                        
-                                        
+ '                                       cUinal & "." & cKin & vbTab & vbTab &  "[" & cBaktun & " "  & "Baktun" & " "  & cKatun & " " & "Katun" & " " & cTun & " " & "Tun" & " " & cUinal & " " & "Uinal" & " " & cKin & " " & "Kin" & "]"
+
+
 'objLogFile.WriteLine SDcount & vbTab & SMname & vbTab  & LDcount & vbTab  & LMname & vbTab & sFullDate & _
 '                                                vbTab & ">" & CFZ & "<" & vbTab & vbTab & cBaktun & "." & cKatun & "." & cTun & "." & _
-'                                        cUinal & "." & cKin & vbTab & vbTab &  "[" & cBaktun & " "  & "Baktun" & " "  & cKatun & " " & "Katun" & " " & cTun & " " & "Tun" & " " & cUinal & " " & "Uinal" & " " & cKin & " " & "Kin" & "]" 
-        
+'                                        cUinal & "." & cKin & vbTab & vbTab &  "[" & cBaktun & " "  & "Baktun" & " "  & cKatun & " " & "Katun" & " " & cTun & " " & "Tun" & " " & cUinal & " " & "Uinal" & " " & cKin & " " & "Kin" & "]"
+
         SDcount = SDcount + 1
         SMcount = SMcount + 1
         LDcount = LDcount + 1
@@ -201,17 +200,17 @@ End If
                 LMcount = LMcount + 1
                 LDcount = 1
         End If
-        
+
         If SDcount > 13 then
                 SDcount = 1
         End If
         If SMcount > 20 Then
                 SMcount = 1
         End If
-        
+
         CFZ = CFZ + 1
-        
-        
+
+
         sDay = sDay + 1
         If sMonth = 4 or sMonth = 6 or sMonth = 9 or sMonth = 11 Then
                 If sDay > 30 Then
@@ -220,14 +219,14 @@ End If
                 End If
         ElseIf sMonth = 1 or sMonth = 3 or sMonth = 5 or sMonth = 7 or sMonth = 8 or sMonth = 10 or sMonth = 12 Then
                 If sDay > 31 Then
-                        If sMonth = 12 Then 
+                        If sMonth = 12 Then
                                 If sBCAD = "BC" Then
                                         sYear = sYear - 1
                                         If sYear = 0 Then
                                                 sYear = 1
                                                 sBCAD = "AD"
                                         End If
-                                Else 
+                                Else
                                         sYear = sYear + 1
                                 End If
                                 sMonth = 1
@@ -236,7 +235,7 @@ End If
                                 sMonth = sMonth + 1
                                 sDay = 1
                         End If
-                        
+
                 End If
         ElseIf sMonth = 2 Then
                 if sYear mod 400 = 0 Then
@@ -258,17 +257,17 @@ End If
                         If sDay > 28 Then
                                 sDay = 1
                         End If
-                End If  
+                End If
         End If
-        
+
 
 
 Loop
 EndTime = Time()
 objStdOut.WriteLine SDcount & vbTab & SMname & vbTab  & LDcount & vbTab  & LMname & vbTab & sFullDate & _
                                                 vbTab & ">" & CFZ & "<" & vbTab & vbTab & cBaktun & "." & cKatun & "." & cTun & "." & _
-                                        cUinal & "." & cKin & vbTab & vbTab &  "[" & cBaktun & " "  & "Baktun" & " "  & cKatun & " " & "Katun" & " " & cTun & " " & "Tun" & " " & cUinal & " " & "Uinal" & " " & cKin & " " & "Kin" & "]" 
-  
+                                        cUinal & "." & cKin & vbTab & vbTab &  "[" & cBaktun & " "  & "Baktun" & " "  & cKatun & " " & "Katun" & " " & cTun & " " & "Tun" & " " & cUinal & " " & "Uinal" & " " & cKin & " " & "Kin" & "]"
+
 objStdOut.WriteLine startTime & vbTab & ">>" & vbTab & EndTime
 
 objStdOut.close
